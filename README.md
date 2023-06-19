@@ -1,6 +1,12 @@
 # pi-hub
 Notes and scripts for the RPI Hub
 
+Order:
+1. Webmin
+2. Pi-Hole
+3. Email
+4. NUT
+
 ## Pi-Hole
 https://github.com/pi-hole/pi-hole/#one-step-automated-install
 
