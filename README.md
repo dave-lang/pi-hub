@@ -6,6 +6,7 @@ Order:
 2. Pi-Hole
 3. Email
 4. NUT
+5. PiVPN
 
 ## Pi-Hole
 https://github.com/pi-hole/pi-hole/#one-step-automated-install
@@ -19,3 +20,7 @@ https://www.networkshinobi.com/nut-email-notifications/
 
 ## Webmin
 https://webmin.com/download/
+
+## VPN 
+https://www.pivpn.io/
+https://docs.pivpn.io/guides/dynamic-dns/ (Via DuckDNS)
