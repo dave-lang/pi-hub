@@ -1,0 +1,48 @@
+## ups.conf
+[eaton3s]
+driver = usbhid-ups
+port = auto
+desc = "Eaton 3S"
+
+## hosts.conf
+MONITOR eaton3s@localhost "Local UPS"
+
+## upsd.users
+[monuser]
+   password = ###
+   upsmon master
+  
+## upsmon.conf
+# MONITOR <system> <powervalue> <user> <password> ("master"|"slave")
+MONITOR eaton3s@localhost 1 monuser ### master
+
+## Email script for NOTIFYCMD
+NOTIFYCMD "/etc/nut/notifycmd.sh"
+# Notification events
+NOTIFYFLAG ONLINE     SYSLOG+WALL+EXEC
+NOTIFYFLAG ONBATT     SYSLOG+WALL+EXEC
+NOTIFYFLAG LOWBATT    SYSLOG+WALL+EXEC
+NOTIFYFLAG FSD        SYSLOG+WALL+EXEC
+NOTIFYFLAG COMMOK     SYSLOG+WALL+EXEC
+NOTIFYFLAG COMMBAD    SYSLOG+WALL+EXEC
+NOTIFYFLAG SHUTDOWN   SYSLOG+WALL+EXEC
+NOTIFYFLAG REPLBATT   SYSLOG+WALL+EXEC
+NOTIFYFLAG NOCOMM     SYSLOG+WALL+EXEC
+NOTIFYFLAG NOPARENT   SYSLOG+WALL+EXEC
+
+## notifycmd.sh
+#!/bin/bash
+EMAIL='dave@dave-lang.com'
+echo -e "Subject: UPS ALERT: $NOTIFYTYPE\n\nUPS: $UPSNAME\r\nAlert type: $NOTIFYTYPE\n\n\nups1: eaton 3S\n" | msmtp $EMAIL
+
+## upsset.conf
+# Uncomment I_HAVE_SECURED_MY_CGI_DIRECTORY
+
+## nut.conf
+# Change to
+MODE=netserver
+
+## For Pi-Hole/Lighttpd, this will get it under pi.hole/cgi-bin/nut
+sudo apt install nut-cgi -y
+sudo lighttpd-enable-mod cgi
+sudo service lighttpd force-reload
