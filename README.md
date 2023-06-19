@@ -6,7 +6,8 @@ Order to install:
 2. Pi-Hole
 3. Email
 4. NUT
-5. PiVPN
+5. Landing page (so you remember where to find things later..)
+6. PiVPN
 
 ***Note: Through laziness Pi-Hole and NUT are using the default Lighttpd server on 80, webmin is on the default 10000 port***
 
