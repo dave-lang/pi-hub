@@ -1,12 +1,14 @@
 # pi-hub
-Notes and scripts for the RPI Hub
+Notes and scripts for the RPI Hub, which currently runs Pi-Hole (DNS Ad/tracker blocking), Webmin (Web admin console), NUT (UPS monitoring) and inbound VPN.
 
-Order:
+Order to install:
 1. Webmin
 2. Pi-Hole
 3. Email
 4. NUT
 5. PiVPN
+
+***Note: Through laziness Pi-Hole and NUT are using the default Lighttpd server on 80, webmin is on the default 10000 port***
 
 ## Pi-Hole
 https://github.com/pi-hole/pi-hole/#one-step-automated-install
